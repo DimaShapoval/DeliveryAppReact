@@ -1,0 +1,31 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    overflow-y: auto;
+    justify-content: space-between;
+}
+.inputWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 80%;
+    margin-top: 30px;
+}
+.label{
+    width: 100%;
+    font-weight: 700;
+    font-size: 16px;
+}
+.input{
+    width: 85%;
+    height: 25px;
+    border-radius: 10px;
+    border: 1px solid black;
+    text-indent: 10px;
+}
+.input:last-child{
+    margin-bottom: 30px;
+}

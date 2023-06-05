@@ -1,0 +1,12 @@
+.wrapper{
+    width: 90%;
+    margin-top: 20px;
+    background-color: rgb(241, 241, 241);
+    border: 2px solid black;
+    border-radius: 10px;
+    display: grid;
+    height: 80vh;
+    overflow-y: auto;
+    grid-template-columns: 45% 45%;
+    gap: 10px;
+}

@@ -1,0 +1,11 @@
+.wrapper{
+    display: grid;
+    grid-template-areas: "s p";
+    grid-template-columns: 30% 1fr ;
+}
+.product{
+    grid-area: p;
+}
+.sideBar{
+    grid-area: s;
+}

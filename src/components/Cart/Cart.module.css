@@ -1,0 +1,11 @@
+.wrapper{
+    display: grid;
+    grid-template-areas: "s m";
+    grid-template-columns: 30% 1fr ;
+}
+.main{
+    grid-area: m;
+}
+.sideBar{
+    grid-area: s;
+}
