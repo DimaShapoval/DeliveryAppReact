@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./CartMain.module.css"
 
-const CartMain = ({ name, itemId, price, src }) => {
+const CartMain = ({ name, itemId, price, src, value, inputChange }) => {
     return (
         <div className={style.wrapper} >
             <div className={style.secondWrapper} key={itemId}>
@@ -16,7 +16,7 @@ const CartMain = ({ name, itemId, price, src }) => {
                         <p className={style.price} >Price: {price} UAH</p>
                     </div>
                     <div className={style.countWrapper}>
-                        <input className={style.countInput} type="number" name="count" id={itemId} />
+                        <input className={style.countInput} type="number" min={1} defaultValue={1} name={name} value={value} onChange={inputChange} id={itemId} />
                     </div>
                 </div>
             </div>
