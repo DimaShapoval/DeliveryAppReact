@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import style from "./Header.module.css"
 
@@ -12,8 +12,14 @@ const Header = () => {
                 <NavLink to='/cart' className={item => item.isActive ? style.itemActive : style.item}>Shoping cart</NavLink>
             </div>
             <div className={style.itemWrapper} >
-                <button type="button" onClick={()=> navigator("/sign-up")} className="btn btn-secondary">Sign Up</button>
-                <button type="button" onClick={()=> navigator('/login')} className="btn btn-light">Login</button>
+                {localStorage.user ? <button onClick={() =>{ localStorage.clear()
+                navigator('/shop')}} className="btn btn-secondary" >Exit</button> :
+                    <div>
+                        <button type="button" onClick={() => navigator("/sign-up")} className="btn btn-secondary">Sign Up</button>
+                        <button type="button" onClick={() => navigator('/login')} className="btn btn-light">Login</button>
+                    </div>
+                }
+
             </div>
 
         </div>

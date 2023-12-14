@@ -42,8 +42,8 @@ const loginReducer = (state = initialState, action) => {
                 axios.post('http://localhost:3001/login', state.inputs)
                 .then(res => {
                     let {data} = res;
+                    console.log(data)
                     if(data.success){
-                        console.log(data)
                         localStorage.setItem('user', JSON.stringify({name: data.name, email: data.email}))
                     }
                     else{

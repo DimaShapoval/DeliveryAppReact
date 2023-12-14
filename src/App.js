@@ -17,7 +17,7 @@ function App() {
       <Header />
       <div>
         <Routes>
-          <Route path='/' element={<ShopMain />} />
+          {/* <Route path='/' element={<ShopMain />} /> */}
           <Route path='/shop/*' element={<ShopMain />} />
           <Route  path='/cart/*' element={<Cart/>} />
           <Route path='/sign-up' element={<SignUpContainer/>} />

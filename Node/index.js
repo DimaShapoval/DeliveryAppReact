@@ -48,13 +48,19 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const checkUserQuery = 'SELECT * FROM "clientInfo" WHERE email = $1';
     const checkUserResult = await pool.query(checkUserQuery, [email]);
+    const checkUserCount = 'SELECT COUNT(*) FROM "clientInfo" WHERE email = $1';
+    const checkUserResultCount = await pool.query(checkUserCount, [email]);
     const userInfo = checkUserResult.rows[0];
-    if (userInfo.email == email && userInfo.password == password) {
-        return res.status(201).json({ success: true, email: userInfo.email, name: userInfo.name})
+    if (checkUserResultCount.rows[0].count > 0) {
+        if (userInfo.email == email && userInfo.password == password) {
+            return res.status(201).json({ success: true, email: userInfo.email, name: userInfo.name })
+        }
+        
     }
     else {
         res.status(201).json({ success: false })
     }
+
 })
 
 app.listen(PORT, () => {
