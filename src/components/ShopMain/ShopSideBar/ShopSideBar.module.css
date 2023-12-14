@@ -48,6 +48,23 @@
     height: 50%;
     justify-content: space-between;
 }
+@media screen and (max-height: 700px) {
+  .navWrapper{
+    height: 80%;
+  }
+  
+  
+}
+@media screen and (max-width: 500px) {
+    .item{
+      font-size: 14px;
+      font-weight: 400
+    }
+    .itemActive{
+      font-size: 14px;
+      font-weight: 500
+    }
+}
 /* width */
 ::-webkit-scrollbar {
     width: 10px;

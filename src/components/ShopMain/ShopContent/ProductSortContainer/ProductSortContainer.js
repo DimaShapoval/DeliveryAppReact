@@ -28,12 +28,12 @@ const ProductSortContainer = () => {
         setCount(count+1)
 
     }
-    useEffect(()=>{
-            if(count > 0){ //if count > 0 create new sessionStorage
-                sessionStorage.setItem( 'cartData' ,JSON.stringify(postDataForCart));
-                }
+    // useEffect(()=>{
+    //         if(count > 0){ //if count > 0 create new sessionStorage
+    //             sessionStorage.setItem( 'cartData' ,JSON.stringify(postDataForCart));
+    //             }
             
-    }, [postDataForCart]) //function work only when postDataForCart changed
+    // }, [postDataForCart]) //function work only when postDataForCart changed
     
     useEffect(() => {
         axios.get('/api') // get request in api
@@ -48,7 +48,7 @@ const ProductSortContainer = () => {
                //create price in UAH format
                 let price = new Intl.NumberFormat('ua-UA', {style: "currency", currency: "UAH"}).format(element.price);
                 //component with props that was created in this function
-                return <ProductSort name={element.name} price={price} company={element.company} src={element.img} key={element.id} click={handleClick} />
+                return <ProductSort name={element.name} price={price} statePrice={element.price} company={element.company} src={element.img} key={element.id}  />
             }
             else {
                 return false;

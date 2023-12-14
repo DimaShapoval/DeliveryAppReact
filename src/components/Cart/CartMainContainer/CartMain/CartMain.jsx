@@ -15,9 +15,9 @@ const CartMain = ({ name, itemId, price, src, value, inputChange }) => {
                     <div className={style.priceWrapper} >
                         <p className={style.price} >Price: {price} UAH</p>
                     </div>
-                    <div className={style.countWrapper}>
+                    {/* <div className={style.countWrapper}>
                         <input className={style.countInput} type="number" min={1} defaultValue={1} name={name} value={value} onChange={inputChange} id={itemId} />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

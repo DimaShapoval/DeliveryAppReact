@@ -29,3 +29,29 @@
 .input:last-child{
     margin-bottom: 30px;
 }
+.orderButton{
+    margin-bottom: 20px;
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(190, 190, 190);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+@media screen and (max-width: 900px) {
+    .orderButton{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .orderButton{
+        width: 80%;
+        font-weight: 400;
+        height: 50px;
+    }
+    .inputWrapper{
+        width: 95%;
+    }
+}

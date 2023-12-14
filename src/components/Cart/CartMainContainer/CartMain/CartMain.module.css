@@ -75,3 +75,22 @@ input[type=number]::-webkit-inner-spin-button{
   border: 2.5px solid black !important;
 
 }
+@media screen and (max-width: 950px) {
+    .wrapper{
+        height: 300px;
+    }
+    .secondWrapper{
+        flex-direction: column;
+        height: 300px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .imageWrapper{
+        width: 70%;
+        max-width: 200px;
+    }
+    .editWrapper{
+        width: 100%;
+    }
+    
+}

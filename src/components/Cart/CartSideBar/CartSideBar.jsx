@@ -4,10 +4,10 @@ import Input from "./InputContainer/Input/Input";
 import InputContainer from "./InputContainer/InputContainer";
 
 
-const CartSideBar = ()=>{
+const CartSideBar = ({ handleClick })=>{
     return(
         <div className={style.wrapper} >
-                <InputContainer/>
+                <InputContainer handleClick={handleClick} />
             
         </div>
     )

@@ -29,6 +29,9 @@
 .App-link {
   color: #61dafb;
 }
+button{
+  cursor: pointer;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -37,4 +40,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+.loginError{
+  border: 1px solid red;
+}
+a:hover{
+  color: rgb(184, 184, 184) !important;
+}
+.lolginSuccess{
+  border: 1px solid #ced4da;
 }

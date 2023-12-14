@@ -4,31 +4,46 @@ import style from "./CartMainContainer.module.css"
 
 
 
-const CartMainContainer = () => {
-    const [arrayOfProductChoose, setArrayOfProductChoose] = useState(JSON.parse(sessionStorage.getItem('cartData')))
+const CartMainContainer = ({completeOrder}) => {
+    const [arrayOfProductChoose, setArrayOfProductChoose] = useState(JSON.parse(sessionStorage.getItem('cartProduct')))
+    const [ textOrder, setTextOrder ] = useState("Oh... Your cart is empty")
+    const [oldSum, setOldSum] = useState(0)
     let arrayOfProductComponent = [];
     let arrayOfInputName = []
     let arrayOfInputValues = []
-    let itemsPriceArray = [];
+    let itemsPriceArrayOfObject = [];
+    let itemsPriceArray = []
+    let itemValuesObject = []
+    let count = 0
     let sumOfItems;
     const [inputValueData, setInputValueData] = useState(arrayOfInputValues);
     const [totalPrice, setTotalPrice] = useState(null);
 
-    const inputChange = (e) =>{
-        const {name, value} = e.target;
-        console.log(e.target);//change value in state
+    useEffect(()=>{
+        setOldSum(sumOfItems)
+        setTotalPrice(new Intl.NumberFormat('ua-UA', {style: 'currency', currency: 'UAH'}).format(sumOfItems))
 
-        
-        
-    }
+    }, [count])
+    useEffect(()=>{
+        if(completeOrder){
+            setTextOrder("Waiting your order for 40 minutes")
+            setTimeout(()=>{
+                sessionStorage.removeItem('cartProduct')
+            }, 0)
+        }
+        else{
+            setTextOrder("Oh... Your cart is empty")
+        }
+    }, [completeOrder])
 
     
     
 
     if (sessionStorage.length > 0) {
-     
-        arrayOfProductComponent = arrayOfProductChoose.map(item => { //create array of components
+        
+        arrayOfProductComponent = arrayOfProductChoose.map((item, index) => { //create array of components
             arrayOfInputName.push(item.name);//find input name
+            itemsPriceArrayOfObject.push({[item.name]:item.price, value: 0})
             itemsPriceArray.push(item.price)
             sumOfItems = itemsPriceArray.reduce((sum, num)=> sum + num,0)
             
@@ -36,20 +51,17 @@ const CartMainContainer = () => {
             for(let i=0;i<arrayOfInputName.length;i++){
                 arrayOfInputValues = {...inputValueData, [arrayOfInputName[i]]: 0}//get object that was in state
             }
-           
-            // console.log([...inputValueData]);
+            count++;
 
             
             
 
-            return <CartMain name={item.name} price={item.price}  inputChange={inputChange} src={item.img} key={item.id} />
+            return <CartMain name={item.name} price={item.price}   src={item.src} key={index} />
         })
         
 
     }
-    useEffect(()=>{
-        setTotalPrice(new Intl.NumberFormat('ua-UA', {style: 'currency', currency: 'UAH'}).format(sumOfItems))
-    }, [itemsPriceArray])
+   
 
 
 
@@ -58,7 +70,8 @@ const CartMainContainer = () => {
             <div className={style.textWrapper}>
                 <h1>Check your order:</h1>
             </div>
-            {arrayOfProductComponent.length ? arrayOfProductComponent : <p className={style.empty} >Oh... Your cart is empty</p>}
+            {arrayOfProductComponent.length && !completeOrder ? arrayOfProductComponent : <p className={style.empty} >{textOrder}</p>}
+            
             {
                 arrayOfProductComponent.length ? 
                 <div className={style.textWrapper} >

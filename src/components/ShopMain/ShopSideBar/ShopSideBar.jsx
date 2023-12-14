@@ -12,7 +12,7 @@ const SideBar = () => {
                 <NavLink className={change => change.isActive ? style.itemActive : style.item} to='product/McDonalds' >McDonald's</NavLink>
                 <NavLink className={change => change.isActive ? style.itemActive : style.item} to='product/KFC' >KFC</NavLink>
                 <NavLink className={change => change.isActive ? style.itemActive : style.item} to='product/MrChef' >Mr.Chef</NavLink>
-                <NavLink className={change => change.isActive ? style.itemActive : style.item} to='product/BurgerClub' >Burger Club</NavLink>
+                {/* <NavLink className={change => change.isActive ? style.itemActive : style.item} to='product/BurgerClub' >Burger Club</NavLink> */}
             </div>
 
         </div>

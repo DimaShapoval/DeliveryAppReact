@@ -19,3 +19,11 @@
     align-items: center;
     justify-content: space-between;
 }
+@media screen and (max-width:550px) {
+    .wrapper{
+        height: 60vh;
+        margin-bottom: 30px;
+        width: 90%;
+        margin-left: 0;
+    }
+}

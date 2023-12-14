@@ -3,13 +3,22 @@ import Input from "./Input/Input";
 import style from "./Input/Input.module.css"
 
 
-const InputContainer = () =>{
+const InputContainer = ({ handleClick }) =>{
     let initialValues = {
         name: '',
         email: '',
         phone: '',
         address: ''
     } // defualt value for inputs
+    if(localStorage.user){
+        let {name, email} = JSON.parse(localStorage.user)
+        initialValues = {
+            name: name,
+            email: email,
+            phone: '',
+            address: '',
+        }
+    }
     const [valueData, setValueData] = useState(initialValues)
     let info = [
         {   
@@ -60,6 +69,7 @@ const InputContainer = () =>{
     return(
         <div className={style.wrapper} >
             {itemArray}
+            <button className={style.orderButton} onClick={handleClick} >Complete order</button>
         </div>
     )
 }
